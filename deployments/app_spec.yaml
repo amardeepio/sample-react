@@ -6,4 +6,4 @@ spec:
     git:
       branch: main
       repo_clone_url: https://github.com/digitalocean/sample-react.git
-    name: sample-react145
+    name: sample-react149
