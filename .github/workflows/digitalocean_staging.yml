@@ -20,7 +20,7 @@ jobs:
 
       - name: Update App Spec
         run: |
-          doctl apps update  70f58411-66ed-4cc0-9fff-c758d97c76c5   --spec deployments/app_spec.yaml
+          doctl apps update  598a4c86-8a4c-4467-99a6-c037fd63fd87    --spec deployments/app_spec.yaml
 
       - name: Verify Deployment
-        run: doctl apps get  70f58411-66ed-4cc0-9fff-c758d97c76c5              
+        run: doctl apps get  598a4c86-8a4c-4467-99a6-c037fd63fd87               
