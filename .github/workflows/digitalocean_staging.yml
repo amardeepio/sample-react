@@ -1,1 +1,26 @@
+name: Deploy App Spec Changes
 
+on:
+  push:
+    branches:
+      - main
+    paths:
+    - 'deployments/app_spec.yaml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install DigitalOcean CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/digitalocean/doctl/master/install.sh | sh -s -- 1.101.0
+          doctl auth init -t ${{ secrets.DIGITALOCEAN_API_TOKEN }}
+
+      - name: Update App Spec
+        run: |
+          doctl apps update 268d794a-5b53-464f-ba09-8513716c3c5f -s deployments/app_spec.yaml
+
+      - name: Verify Deployment
+        run: doctl apps get 268d794a-5b53-464f-ba09-8513716c3c5f            
