@@ -15,8 +15,8 @@ jobs:
 
       - name: Install DigitalOcean CLI
         run: |
-          sudo snap install doctl --classic
-          doctl auth init -t "${{ secrets.DIGITALOCEAN_API_TOKEN }}"
+          sudo snap install doctl 
+          doctl auth init --access-token="${{ secrets.DIGITALOCEAN_API_TOKEN }}"
 
       - name: Update App Spec
         run: |
